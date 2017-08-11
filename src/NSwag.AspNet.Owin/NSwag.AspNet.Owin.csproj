@@ -17,9 +17,6 @@
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="SwaggerUi\**\*" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
-  </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
     <DefineConstants>TRACE;DEBUG;AspNetOwin;NET45</DefineConstants>
   </PropertyGroup>
@@ -27,9 +24,23 @@
     <DefineConstants>TRACE;RELEASE;AspNetOwin;NET45</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="SwaggerUi\favicon-16x16.png" />
+    <None Remove="SwaggerUi\favicon-32x32.png" />
+    <None Remove="SwaggerUi\index.html" />
+    <None Remove="SwaggerUi\oauth2-redirect.html" />
+    <None Remove="SwaggerUi\swagger-ui-bundle.js" />
+    <None Remove="SwaggerUi\swagger-ui.css" />
+    <None Remove="SwaggerUi\swagger-ui.css.map" />
+    <None Remove="SwaggerUi\swagger-ui.js" />
+    <None Remove="SwaggerUi\swagger-ui.js.map" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="..\NSwag.AspNetCore\OAuth2ClientSettings.cs" Link="OAuth2ClientSettings.cs" />
     <Compile Include="..\NSwag.AspNetCore\SwaggerSettings.cs" Link="SwaggerSettings.cs" />
     <Compile Include="..\NSwag.AspNetCore\SwaggerUiSettings.cs" Link="SwaggerUiSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SwaggerUi\**\*" Exclude="bin\**;obj\**;**\*.xproj;packages\**;@(EmbeddedResource)" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Owin" Version="3.0.1" />
